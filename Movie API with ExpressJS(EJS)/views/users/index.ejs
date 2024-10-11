@@ -1,0 +1,78 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="card mt-3">
+    <div class="card-body">
+        <div class="row mx-0 mt-2">
+            <div class="col-9 offset-1">
+                <input type="text" placeholder="Search..." class="form-control" id="searchInput">
+            </div>
+            <div class="col-2">
+                <a href="/users/add" class="btn btn-success btn-block">Add User</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mt-3">
+    <div class="card-header">
+        <div class="card-title">
+            <h2>User List</h2>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row mx-0 mt-3">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table id="userTable" class="table table-bordered table-hover table-striped">
+                        <thead class="table-secondary">
+                            <tr>
+                                <th></th>
+                                <th>Username</th>
+                                <th>Password</th>
+                                <th>isActive</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% data.forEach(x => { %>
+                                <tr>
+                                    <td>
+                                        <a class="btn btn-sm btn-warning" href="/users/<%= x.id %>/edit">Edit</a>
+                                        <form action="/users/<%= x.id %>?_method=DELETE" method="post" style="display:inline;">
+                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                    <td><%= x.username %></td>
+                                    <td><%= x.password %></td>
+                                    <td><%= x.isactive %></td>
+                                </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer.ejs') %>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('searchInput');
+        const userTable = document.getElementById('userTable').querySelector('tbody');
+
+        searchInput.addEventListener('input', function () {
+            const searchValue = this.value.toLowerCase().trim();
+
+            Array.from(userTable.children).forEach(function (row) {
+                const name = row.getElementsByTagName('td')[1].textContent.toLowerCase();
+
+                if (name.includes(searchValue)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>

@@ -1,0 +1,48 @@
+<%- include('../partials/header') %>
+
+<div class="card mt-3">
+    <div class="card-header">
+        <div class="card-title">
+            <h2>Update user</h2>
+        </div>
+    </div>
+    <div class="card-body">
+        <form action="/users/<%= user.id %>?_method=PUT" method="post">
+            <div class="row mx-0 mt-3">
+                <div class="col-4">
+                    <label for="txtIMDB">Username</label>
+                </div>
+                <div class="col-8">
+                    <input type="text" name="username" id="txtIMDB" class="form-control" value="<%= user.username %>">
+                </div>
+            </div>
+            <div class="row mx-0 mt-3">
+                <div class="col-4">
+                    <label for="txtTitle">Password</label>
+                </div>
+                <div class="col-8">
+                    <input type="text" name="password" id="txtTitle" class="form-control" value="<%= user.password %>">
+                </div>
+            </div>
+            <div class="row mx-0 mt-3">
+                <div class="col-4">
+                    <label for="txtDesc">isActive</label>
+                </div>
+                <div class="col-8">
+                    <select class="form-select" name="isactive" aria-label="Default select example">
+                        <option selected>Select</option>
+                        <option value="true">true</option>
+                        <option value="false">false</option>
+                      </select>
+                </div>
+            </div>
+            <div class="row mx-0 mt-3">
+                <div class="col-12">
+                    <input type="submit" value="Edit" class="btn btn-primary w-100">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

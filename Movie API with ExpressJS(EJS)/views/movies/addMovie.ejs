@@ -1,0 +1,44 @@
+<%- include('../partials/header') %>
+
+<div class="card mt-3">
+    <div class="card-header">
+        <div class="card-title">
+            <h2>Add Movie</h2>
+        </div>
+    </div>
+    <div class="card-body">
+        <form action="/movies/add" method="post">
+            <div class="row mx-0 mt-3">
+                <div class="col-4">
+                    <label for="txtIMDB">IMDB</label>
+                </div>
+                <div class="col-8">
+                    <input type="text" name="imdb" id="txtIMDB" class="form-control">
+                </div>
+            </div>
+            <div class="row mx-0 mt-3">
+                <div class="col-4">
+                    <label for="txtTitle">Title</label>
+                </div>
+                <div class="col-8">
+                    <input type="text" name="title" id="txtTitle" class="form-control">
+                </div>
+            </div>
+            <div class="row mx-0 mt-3">
+                <div class="col-4">
+                    <label for="txtDesc">Description</label>
+                </div>
+                <div class="col-8">
+                    <input type="text" name="description" id="txtDesc" class="form-control">
+                </div>
+            </div>
+            <div class="row mx-0 mt-3">
+                <div class="col-12">
+                    <input type="submit" value="Add" class="btn btn-primary">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>
